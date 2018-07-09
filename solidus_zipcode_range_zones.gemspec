@@ -1,13 +1,13 @@
 # encoding: UTF-8
 $:.push File.expand_path('../lib', __FILE__)
-require 'solidus_zip_zones/version'
+require 'solidus_zipcode_range_zones/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'solidus_zip_zones'
+  s.name        = 'solidus_zipcode_range_zones'
   s.author      = 'Daniele Palombo'
   s.email       = 'danielepalombo@nebulab.it'
-  s.homepage    = 'http://github.com/solidusio-contrib/solidus_zip_zones'
-  s.version     = SolidusZipZones::VERSION
+  s.homepage    = 'http://github.com/solidusio-contrib/solidus_zipcode_range_zones'
+  s.version     = SolidusZipcodeRangeZones::VERSION
   s.summary     = 'Solidus zip zones'
   s.description = 'Create zone zip code based'
   s.license     = 'BSD-3-Clause'
@@ -32,4 +32,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rubocop-rspec', '1.13.0'
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'pry-byebug'
 end

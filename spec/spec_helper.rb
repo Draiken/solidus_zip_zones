@@ -18,6 +18,7 @@ require File.expand_path('../dummy/config/environment.rb', __FILE__)
 require 'rspec/rails'
 require 'database_cleaner'
 require 'ffaker'
+require 'pry-byebug'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -30,8 +31,8 @@ require 'spree/testing_support/controller_requests'
 require 'spree/testing_support/factories'
 require 'spree/testing_support/url_helpers'
 
-# Requires factories defined in lib/solidus_zip_zones/factories.rb
-require 'solidus_zip_zones/factories'
+# Requires factories defined in lib/solidus_zipcode_range_zones/factories.rb
+require 'solidus_zipcode_range_zones/factories'
 
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods

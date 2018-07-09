@@ -25,6 +25,6 @@ end
 
 desc 'Generates a dummy app for testing'
 task :test_app do
-  ENV['LIB_NAME'] = 'solidus_zip_zones'
+  ENV['LIB_NAME'] = 'solidus_zipcode_range_zones'
   Rake::Task['extension:test_app'].invoke
 end

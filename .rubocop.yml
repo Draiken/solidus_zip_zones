@@ -8,9 +8,9 @@ AllCops:
 
 Metrics/BlockLength:
   Exclude:
-    - lib/solidus_zip_zones/factories.rb
+    - lib/solidus_zipcode_range_zones/factories.rb
     - spec/**/*
-    - solidus_zip_zones.gemspec
+    - solidus_zipcode_range_zones.gemspec
 
 # Sometimes I believe this reads better
 # This also causes spacing issues on multi-line fixes

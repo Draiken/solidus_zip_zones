@@ -1,24 +1,22 @@
-[![Build Status](https://travis-ci.org/nebulab/solidus_zip_zones.svg?branch=master)](https://travis-ci.org/nebulab/solidus_zip_zones)
-
-SolidusZipZones
+SolidusZipcodeRangeZones
 ===============
 
-Extract the Spree::Zone by zip code.
+Extract the Spree::Zone by zipcode ranges.
 
 Installation
 ------------
 
-Add solidus_zip_zones to your Gemfile:
+Add solidus_zipcode_range_zones to your Gemfile:
 
 ```ruby
-gem 'solidus_zip_zones'
+gem 'solidus_zipcode_range_zones', github: 'Draiken/solidus_zipcode_range_zones'
 ```
 
 Bundle your dependencies and run the installation generator:
 
 ```shell
 bundle
-bundle exec rails g solidus_zip_zones:install
+bundle exec rails g solidus_zipcode_range_zones:install
 ```
 
 Testing
@@ -35,19 +33,12 @@ When testing your applications integration with this extension you may use it's 
 Simply add this require statement to your spec_helper:
 
 ```ruby
-require 'solidus_zip_zones/factories'
+require 'solidus_zipcode_range_zones/factories'
 ```
 
 ## License
 
-SolidusZipZones is copyright © 2019 [Nebulab](http://nebulab.it/). It is free software, and may be redistributed under the terms specified in the [license].
-
-## About
-
-![Nebulab](http://nebulab.it/assets/images/public/logo.svg)
-
-SolidusZipZones is funded and maintained by the [Nebulab](http://nebulab.it/) team.
-
-We firmly believe in the power of open-source. [Contact us](http://nebulab.it/contact-us/) if you like our work and you need help with your project design or development.
+SolidusZipcodeRangeZones is inspired by [SolidusZipZones]. It is free software, and may be redistributed under the terms specified in the [license].
 
 [license]: MIT-LICENSE
+[SolidusZipZones]: https://github.com/nebulab/solidus_zip_zones

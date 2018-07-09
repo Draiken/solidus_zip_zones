@@ -1,8 +1,8 @@
-module SolidusZipZones
+module SolidusZipcodeRangeZones
   class Engine < Rails::Engine
     require 'spree/core'
     isolate_namespace Spree
-    engine_name 'solidus_zip_zones'
+    engine_name 'solidus_zipcode_range_zones'
 
     # use rspec for tests
     config.generators do |g|
