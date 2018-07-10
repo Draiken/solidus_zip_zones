@@ -1,7 +1,7 @@
 module SolidusZipcodeRangeZones
   module ZoneDecorator
     def self.prepended(base)
-      base.has_many :zipcode_ranges
+      base.has_many :zipcode_ranges, dependent: :destroy, class_name: 'Spree::ZipcodeRange', inverse_of: :zone
 
       base.accepts_nested_attributes_for :zipcode_ranges
 
@@ -40,7 +40,7 @@ module SolidusZipcodeRangeZones
     end
 
     def kind
-      return 'zip' if zipcodes.present?
+      return 'zip' if zipcode_ranges.exists?
 
       super
     end

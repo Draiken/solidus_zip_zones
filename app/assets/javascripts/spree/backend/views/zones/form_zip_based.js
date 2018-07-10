@@ -39,9 +39,4 @@ $(function(){
       $('#zip_members').hide()
     }
   }
-
-  $(".select2-taggable").select2({
-    tags: true,
-    tokenSeparators: [',', ' ']
-  })
 })

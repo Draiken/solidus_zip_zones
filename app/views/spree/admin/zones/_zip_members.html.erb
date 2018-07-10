@@ -2,10 +2,17 @@
   <fieldset class="no-border-bottom">
     <legend align="center"><%= Spree.t(:zipcode) %></legend>
 
-    <%= zone_form.field_container :zipcodes do %>
-      <%= zone_form.label :zipcodes,Spree.t(:zipcode) %><br>
-      <%= zone_form.hidden_field :zipcodes, value: '', id: 'hidden_zone_zipcodes' %>
-      <%= zone_form.text_field :zipcodes, class: "select2-taggable fullwidth" %>
+    <% @zone.zipcode_ranges.build unless @zone.zipcode_ranges.any? %>
+    <%= zone_form.fields_for :zipcode_ranges do |range_form| %>
+      <%= zone_form.field_container :zipcode_ranges do %>
+        <%= range_form.label :start, "Início da faixa de CEP (5 primeiros dígitos)" %><br>
+        <%= range_form.text_field :start, class: "fullwidth" %>
+      <% end %>
+
+      <%= zone_form.field_container :zipcode_ranges do %>
+        <%= range_form.label :end, "Fim da faixa de CEP (5 primeiros dígitos)" %><br>
+        <%= range_form.text_field :end, class: "fullwidth" %>
+      <% end %>
     <% end %>
   </fieldset>
 </div>
