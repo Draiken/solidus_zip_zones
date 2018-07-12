@@ -5,8 +5,12 @@ RSpec.describe SolidusZipcodeRangeZones::ZoneDecorator, type: :model do
     let(:address_within_range) { create(:address, zipcode: '80520-320') }
     let(:address_outside_range) { create(:address, zipcode: '83001-320') }
 
-    let(:zipcode_range) { Spree::ZipcodeRange.new(start: 80_000, end: 82_999) }
-    let!(:zone_with_zipcode_ranges) { create(:zone, zipcode_ranges: [zipcode_range]) }
+    let(:zipcode_range) { Spree::ZipcodeRange.new(name: "Curitiba", start: 80_000, end: 82_999) }
+    let!(:zone_with_zipcode_ranges) do
+      zone = create(:zone)
+      zone.zipcode_ranges << zipcode_range
+      zone
+    end
     let!(:zone_with_state) { create(:zone, states: [address_within_range.state]) }
     let!(:zone_with_country) { create(:zone, countries: [address_within_range.country]) }
 

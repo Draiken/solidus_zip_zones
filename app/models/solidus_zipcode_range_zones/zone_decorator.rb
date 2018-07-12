@@ -1,9 +1,7 @@
 module SolidusZipcodeRangeZones
   module ZoneDecorator
     def self.prepended(base)
-      base.has_many :zipcode_ranges, dependent: :destroy, class_name: 'Spree::ZipcodeRange', inverse_of: :zone
-
-      base.accepts_nested_attributes_for :zipcode_ranges
+      base.has_many :zipcode_ranges, through: :zone_members, source: :zoneable, source_type: 'Spree::ZipcodeRange'
 
       base.scope :with_member_ids, ->(state_ids, country_ids, zipcode) do
         if !state_ids.present? && !country_ids.present? && !zipcode.present?
@@ -22,10 +20,12 @@ module SolidusZipcodeRangeZones
           zipcode = zipcode.gsub(/[^\d]/, '')[0..-4]
 
           matching_country_or_state = matching_state.or(matching_country)
-          matching_zipcode_range = zipcode_ranges_table[:start].lteq(zipcode).and(zipcode_ranges_table[:end].gteq(zipcode))
+          matching_zipcode_range =
+            spree_zone_members_table[:zoneable_type].eq("Spree::ZipcodeRange")
+            .and(zipcode_ranges_table[:start].lteq(zipcode).and(zipcode_ranges_table[:end].gteq(zipcode)))
 
-          left_joins(:zipcode_ranges)
-            .left_joins(:zone_members)
+          joins(:zone_members)
+            .joins("LEFT JOIN spree_zipcode_ranges on spree_zipcode_ranges.id = spree_zone_members.zoneable_id AND spree_zone_members.zoneable_type = 'Spree::ZipcodeRange'")
             .where(matching_country_or_state.or(matching_zipcode_range)).distinct
         end
       end
